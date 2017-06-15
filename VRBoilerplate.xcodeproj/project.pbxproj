@@ -27,6 +27,7 @@
 		760A4B47E60361A6E05DBC73 /* Pods-VRBoilerplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRBoilerplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VRBoilerplate/Pods-VRBoilerplate.debug.xcconfig"; sourceTree = "<group>"; };
 		7B44388607F0E6A7429FE7AA /* libPods-VRBoilerplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VRBoilerplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		962E7EC21EF2388300494E09 /* AR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AR.storyboard; sourceTree = "<group>"; };
+		962E7EC51EF238F100494E09 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		963CFDFB1EF2376E00858A11 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		E6D67C6F1CEDA76A00D9F9E9 /* VRBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VRBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D67C721CEDA76A00D9F9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -69,6 +70,7 @@
 		962E7EC41EF238A300494E09 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				962E7EC51EF238F100494E09 /* art.scnassets */,
 				963CFDFB1EF2376E00858A11 /* ARViewController.swift */,
 				962E7EC21EF2388300494E09 /* AR.storyboard */,
 			);
