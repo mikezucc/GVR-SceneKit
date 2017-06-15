@@ -10,9 +10,13 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ARViewController: UIViewController, ARSCNViewDelegate {
+class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+
+    var dLink: CADisplayLink?
+
+    var lastTransform: matrix_float4x4?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +42,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
+        sceneView.session.delegate = self
+
+//        dLink = CADisplayLink(target: self, selector: #selector(tick))
+//        dLink?.preferredFramesPerSecond = 0
+//        dLink?.add(to: .main, forMode: RunLoopMode.commonModes)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,6 +61,25 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Release any cached data, images, etc that aren't in use.
     }
 
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        // Present an error message to the user
+        print("Failed with error \(error)")
+    }
+
+    func sessionWasInterrupted(_ session: ARSession) {
+        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+        print("session was interrupted")
+    }
+
+    func sessionInterruptionEnded(_ session: ARSession) {
+        // Reset tracking and/or remove existing anchors if consistent tracking is required
+        print("session was interrupted")
+    }
+
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        lastTransform = frame.camera.transform
+    }
+
     // MARK: - ARSCNViewDelegate
 
     /*
@@ -62,20 +90,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
      return node
      }
      */
+//- (void)session:(ARSession *)session didUpdateFrame:(ARFrame *)frame
 
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-
+    @objc func tick() {
+        if let transform = sceneView.session.currentFrame?.camera.transform {
+            lastTransform = transform
+        }
     }
 
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-
-    }
-
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-
-    }
 }
 

@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
 
     var window: UIWindow?
 
+    var arWindow: UIWindow?
+
+    static var arVC: ARViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         window.rootViewController = navController;
         window.makeKeyAndVisible();
         self.window = window;
+
+        arWindow = UIWindow(frame: UIScreen.main.bounds)
+        AppDelegate.arVC = UIStoryboard(name: "AR", bundle: .main).instantiateInitialViewController() as? ARViewController
+        arWindow?.rootViewController = AppDelegate.arVC
+        arWindow?.makeKeyAndVisible()
         
         return true
     }

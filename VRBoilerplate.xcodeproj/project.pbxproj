@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B99218952002C7B262CE70A /* libPods-VRBoilerplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B44388607F0E6A7429FE7AA /* libPods-VRBoilerplate.a */; };
 		962E7EC31EF2388300494E09 /* AR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962E7EC21EF2388300494E09 /* AR.storyboard */; };
+		962E7EC61EF23A9B00494E09 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 962E7EC51EF238F100494E09 /* art.scnassets */; };
 		963CFDFC1EF2376E00858A11 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963CFDFB1EF2376E00858A11 /* ARViewController.swift */; };
 		E6D67C731CEDA76A00D9F9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D67C721CEDA76A00D9F9E9 /* AppDelegate.swift */; };
 		E6D67C751CEDA76A00D9F9E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D67C741CEDA76A00D9F9E9 /* ViewController.swift */; };
@@ -217,6 +218,7 @@
 			files = (
 				E6D67C7D1CEDA76A00D9F9E9 /* LaunchScreen.storyboard in Resources */,
 				E6D67CFB1CF2E4E900D9F9E9 /* LICENSE in Resources */,
+				962E7EC61EF23A9B00494E09 /* art.scnassets in Resources */,
 				E6D67C7A1CEDA76A00D9F9E9 /* Assets.xcassets in Resources */,
 				962E7EC31EF2388300494E09 /* AR.storyboard in Resources */,
 			);

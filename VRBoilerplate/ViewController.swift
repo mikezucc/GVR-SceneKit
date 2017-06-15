@@ -90,7 +90,11 @@ class ViewController: UIViewController, GVRCardboardViewDelegate {
     }
     
     func cardboardView(_ cardboardView: GVRCardboardView!, draw eye: GVREye, with headTransform: GVRHeadTransform!) {
-        renderer?.cardboardView(cardboardView, draw: eye, with: headTransform);
+//        if AppDelegate.arVC?.lastTransform != nil {
+//            renderer?.cardboardViewFromARTransform(cardboardView, draw: eye, with: headTransform, slamTransform: (AppDelegate.arVC?.lastTransform)!)
+//        } else {
+            renderer?.cardboardView(cardboardView, draw: eye, with: headTransform);
+//        }
     }
     
     func cardboardView(_ cardboardView: GVRCardboardView!, shouldPauseDrawing pause: Bool) {

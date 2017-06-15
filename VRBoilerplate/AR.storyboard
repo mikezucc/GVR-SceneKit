@@ -12,15 +12,13 @@
         <scene sceneID="uXq-wD-6Er">
             <objects>
                 <viewController id="Ky6-8H-532" customClass="ARViewController" customModule="VRBoilerplate" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="V1i-BD-4uG"/>
-                        <viewControllerLayoutGuide type="bottom" id="fFD-8I-DfZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RSx-Rh-42J" customClass="ARSCNView">
+                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MlZ-NP-0xF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </arscnView>
+                    <connections>
+                        <outlet property="sceneView" destination="MlZ-NP-0xF" id="F1o-Fj-CRU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UY-u5-vlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

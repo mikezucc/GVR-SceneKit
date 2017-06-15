@@ -61,14 +61,45 @@ class SceneKitVRRenderer: NSObject, GVRCardboardViewDelegate {
         
         renderTime = CACurrentMediaTime()
     }
-    
+
+//    func cardboardViewFromARTransform(_ cardboardView: GVRCardboardView!, draw eye: GVREye, with headTransform: GVRHeadTransform!, slamTransform: matrix_float4x4) {
+//
+//        //UnsafeMutablePointer<Float>!
+//        var mutableTransform = slamTransform
+//        let slamGLKTransform = GLKMatrix4Make(slamTransform.columns.0.w, slamTransform.columns.0.x, slamTransform.columns.0.y, slamTransform.columns.0.z,
+//                                              slamTransform.columns.1.w, slamTransform.columns.1.x, slamTransform.columns.1.y, slamTransform.columns.1.z,
+//                                              slamTransform.columns.2.w, slamTransform.columns.2.x, slamTransform.columns.2.y, slamTransform.columns.2.z,
+//                                              slamTransform.columns.3.w, slamTransform.columns.3.x, slamTransform.columns.3.y, slamTransform.columns.3.z)
+//
+//        let viewport = headTransform.viewport(for: eye);
+//        glViewport(GLint(viewport.origin.x), GLint(viewport.origin.y), GLint(viewport.size.width), GLint(viewport.size.height));
+//        glScissor(GLint(viewport.origin.x), GLint(viewport.origin.y), GLint(viewport.size.width), GLint(viewport.size.height));
+//
+//        let projection_matrix = headTransform.projectionMatrix(for: eye, near: 0.1, far: 1000.0);
+////        print("\(headTransform.headPoseInStartSpace()) \(slamGLKTransform)")
+//        let model_view_matrix = GLKMatrix4Multiply(headTransform.eye(fromHeadMatrix: eye), headTransform.headPoseInStartSpace())
+//
+//        guard let eyeRenderer = renderer[eye.rawValue] else {
+//            fatalError("no eye renderer for eye")
+//        }
+//
+//        eyeRenderer.pointOfView?.camera?.projectionTransform = SCNMatrix4FromGLKMatrix4(projection_matrix);
+//        eyeRenderer.pointOfView?.transform = SCNMatrix4FromGLKMatrix4(GLKMatrix4Transpose(model_view_matrix));
+//
+//        if glGetError() == GLenum(GL_NO_ERROR) {
+//            eyeRenderer.render(atTime: renderTime)
+//        } else {
+//            print("some bad shit happened")
+//        }
+//
+//    }
+
     func cardboardView(_ cardboardView: GVRCardboardView!, draw eye: GVREye, with headTransform: GVRHeadTransform!) {
         
         let viewport = headTransform.viewport(for: eye);
         glViewport(GLint(viewport.origin.x), GLint(viewport.origin.y), GLint(viewport.size.width), GLint(viewport.size.height));
         glScissor(GLint(viewport.origin.x), GLint(viewport.origin.y), GLint(viewport.size.width), GLint(viewport.size.height));
-        
-        
+
         let projection_matrix = headTransform.projectionMatrix(for: eye, near: 0.1, far: 1000.0);
         let model_view_matrix = GLKMatrix4Multiply(headTransform.eye(fromHeadMatrix: eye), headTransform.headPoseInStartSpace())
 
