@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let navController = UINavigationController.init(rootViewController: ViewController.init() )
-        navController.delegate = self;
-        navController.isNavigationBarHidden = true;
-        
-        let window = UIWindow.init(frame: UIScreen.main.bounds);
-        window.rootViewController = navController;
+//        let navController = UINavigationController(rootViewController:  )
+//        navController.delegate = self;
+//        navController.isNavigationBarHidden = true;
+
+        let window = UIWindow(frame: UIScreen.main.bounds);
+        window.rootViewController = ViewController();
         window.makeKeyAndVisible();
         self.window = window;
 
@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         AppDelegate.arVC = UIStoryboard(name: "AR", bundle: .main).instantiateInitialViewController() as? ARViewController
         arWindow?.rootViewController = AppDelegate.arVC
         arWindow?.makeKeyAndVisible()
-        
+//        self.window = arWindow
+
         return true
     }
     

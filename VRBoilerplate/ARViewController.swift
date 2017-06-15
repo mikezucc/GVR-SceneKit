@@ -16,7 +16,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
     var dLink: CADisplayLink?
 
-    var lastTransform: matrix_float4x4?
+    var lastTransform: GLKMatrix4?
+    var lastState = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +78,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
 
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        lastTransform = frame.camera.transform
+        lastState = "\(frame.camera.trackingState)"
+        if lastState.contains("normal") {
+            lastTransform = convertSimDFloat4x4ToGLKMat4(frame.camera.transform)
+        }
+    }
+
+    func convertSimDFloat4x4ToGLKMat4(_ simdTransform: matrix_float4x4) -> GLKMatrix4 {
+        let slamGLKTransform = GLKMatrix4Make(simdTransform.columns.0.w, simdTransform.columns.0.x, simdTransform.columns.0.y, simdTransform.columns.0.z,
+                                              simdTransform.columns.1.w, simdTransform.columns.1.x, simdTransform.columns.1.y, simdTransform.columns.1.z,
+                                              simdTransform.columns.2.w, simdTransform.columns.2.x, simdTransform.columns.2.y, simdTransform.columns.2.z,
+                                              simdTransform.columns.3.w, simdTransform.columns.3.x, simdTransform.columns.3.y, simdTransform.columns.3.z)
+        return slamGLKTransform
     }
 
     // MARK: - ARSCNViewDelegate
@@ -92,11 +104,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
      */
 //- (void)session:(ARSession *)session didUpdateFrame:(ARFrame *)frame
 
-    @objc func tick() {
-        if let transform = sceneView.session.currentFrame?.camera.transform {
-            lastTransform = transform
-        }
-    }
+//    @objc func tick() {
+//        if let transform = sceneView.session.currentFrame?.camera.transform {
+//            lastTransform = transform
+//        }
+//    }
 
 }
 
